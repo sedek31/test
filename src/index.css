@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components{
+    .per{
+      @apply  container w-screen h-[100%] bg-slate-500  flex  flex-col items-center  justify-start  pt-12 rounded-lg my-4
+    }
+    .btn-ro{
+       @apply m-1  text-3xl text-white  cursor-pointer rounded-full 
+    }
+    .btn{
+      @apply  m-1  text-3xl text-white  cursor-pointer
+    }
+    
+    .thetext{
+       @apply bg-black mb-12 text-white uppercase p-6 
+    }
+    .h{
+      @apply bg-black mb-12 text-white uppercase p-6  font-bold
+    }
+    .f-c{
+      @apply  flex flex-col justify-center items-center
+    }
+    .f-r{
+      @apply  flex  justify-center items-center
+    }
+    .animat {
+       @apply animate-wiggle
+  }
+}
