@@ -27,7 +27,7 @@ const Edit = () => {
     <div>
        <div className='per'>
       <div className=' f-c'>
-        <label className='thetext bg-red-800'>edit item in list</label>
+        <label className='thetext bg-yellow-700'>edit item in list</label>
         <input    type='text' 
                     value={thevalue} 
                     onChange={(e) => setTheValue(e.target.value)} /> 
