@@ -12,9 +12,13 @@ const Input = () => {
 const handleinput=()=>{
   // استرجاع قيمه لو موجود  لو لأ خليها مصفوصفة فاضية 
     const newitem=JSON.parse(localStorage.getItem('todolist')) || [];
+    const tasks ={
+      task:input.trim(),
+      isFavorite: false
+    }
     // ازالة المسافات في البيانات المدخلة
   // اضافة في المصفوفة 
-    newitem.push(input.trim())
+    newitem.push(tasks)
     // اضافة في مذاكرة الداخلية المصفوفة 
     //باسم  todolist
     localStorage.setItem('todolist',JSON.stringify(newitem))
