@@ -76,7 +76,7 @@ const Show = ({title, btn}) => {
 
       {show.length > 0 ? (
         show.map((z, index) => (
-          <div key={index} className={`f-c bg-slate-400 w-1/2 mx-auto mt-3 ${animt === z.id ? "animat" : ""}`}>
+          <div key={index} className={`f-c bg-slate-400 w-1/2 mx-auto mt-3 ${animt === index? "animat" : ""}`}>
             <div className='f-r w-full'>
               <div className='flex items-center justify-start w-4/5 bg-slate-50 rounded-full ml-1'>
                 <span className='bg-black text-white'>{1 + index}</span>
