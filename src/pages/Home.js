@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { FaEdit } from "react-icons/fa";
-import { GrFavorite } from "react-icons/gr";
-import { IoCheckmarkCircle } from "react-icons/io5";
-import { MdOutlineFavorite } from "react-icons/md";
+// import { FaEdit } from "react-icons/fa";
+// import { GrFavorite } from "react-icons/gr";
+// import { IoCheckmarkCircle } from "react-icons/io5";
+// import { MdOutlineFavorite } from "react-icons/md";
 import ToDoField from '../components/ToDoField';
-
+import Tittle from '../Ui/Tittle';
+import DeleteAll from '../Ui/DeleteAll';
+import EmptyData from '../Ui/EmptyData';
+import ShowList from '../Ui/ShowList';
 const Home = () => {
   //عدد المهام
     const [tasks, setTasks] = useState([]);
@@ -72,10 +75,7 @@ const Home = () => {
 
     return (
         <div className='per'>
-            <div className='flex justify-center gap-4 items-center'>
-                <h1 className='h my-auto'>to do list</h1>
-                <span className='text-white font-bold'>عدد المفضلة: {favoriteCount}</span>
-            </div>
+           <Tittle favoriteCount={favoriteCount} tittleh1="to do list"/>
 
             <div className='mt-7'>
                 <ToDoField
@@ -90,34 +90,18 @@ const Home = () => {
 
             {tasks.length > 0 ? (
                 tasks.map((task, index) => (
-                    <div key={index} className={`f-c bg-slate-400 w-1/2 mx-auto mt-4`}>
-                        <div className='f-r w-full '>
-                            <div className='flex items-center justify-start w-4/5 bg-slate-50 rounded-full ml-1'>
-                                <span className='bg-black text-white'>{1 + index}</span>
-                                <span className='text-lg font-semibold text-right mx-2'>{task.task}</span>
-                            </div>
-                            <div className='flex justify-around gap-1 w-1/5'>
-                                <button className='btn-ro bg-red-950 hover:bg-red-700 transition' onClick={() => handleDeleteTask(index)}>
-                                    <IoCheckmarkCircle />
-                                </button>
-                                <button className={`btn ${task.isFavorite ? 'text-pink-600' : ''}`} onClick={() => toggleFavorite(index)}>
-                                    {task.isFavorite ? <GrFavorite /> : <MdOutlineFavorite />}
-                                </button>
-                                <button onClick={() => handleEditTask(index)} className='btn bg-green-950 hover:bg-green-700 transition'>
-                                    <FaEdit />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <ShowList index={index} task={task.task}  funhandleDeleteTask={ handleDeleteTask(index)}
+                    funtoggleFavorite={toggleFavorite(index)} funhandleEditTask={handleEditTask(index)}
+                    />
+                   
                 ))
             ) : (
-                <p className='mt-6'>لم يتم إضافة أي مهام حتى الآن!</p>
+             <EmptyData  title=" you do not put any task"/>
+               
             )}
 
             {tasks.length > 0 && (
-                <button className='btn uppercase hover:text-red-700 mt-5' onClick={deleteAllTasks}>
-                    حذف الكل
-                </button>
+                <DeleteAll title= ' delete all' funClick={deleteAllTasks}/>
             )}
         </div>
     );
