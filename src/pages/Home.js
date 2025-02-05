@@ -90,8 +90,10 @@ const Home = () => {
 
             {tasks.length > 0 ? (
                 tasks.map((task, index) => (
-                    <ShowList index={index} task={task.task}  funhandleDeleteTask={ handleDeleteTask(index)}
-                    funtoggleFavorite={toggleFavorite(index)} funhandleEditTask={handleEditTask(index)}
+                    <ShowList index={index} task={task.task} isFavorite={task.isFavorite}
+                      funhandleDeleteTask={()=> handleDeleteTask(index)}
+                    funtoggleFavorite={()=>toggleFavorite(index)} 
+                    funhandleEditTask={()=>handleEditTask(index)}
                     />
                    
                 ))

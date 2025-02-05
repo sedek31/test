@@ -1,15 +1,13 @@
 import React from 'react'
 
 
-const IconButton = ({stlye,fun,
-    index,children
-,
-}) => {
+const IconButton = ({fun,
+    children}) => {
   return (
     <div>
-       <button className={stlye} onClick={() => fun(index)}>
+       <button cl onClick={() => fun()}>
        {children}
-                                    </button>
+           </button>
     </div>
   )
 }

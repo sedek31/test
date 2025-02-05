@@ -6,7 +6,7 @@ import { MdOutlineFavorite } from "react-icons/md"
 import NumberTask from "./NumberTask"
 import Task from "./Task"
 import IconButton from './IconButton';
-const ShowList = ({index , task, funhandleDeleteTask,funtoggleFavorite,funhandleEditTask}) => {
+const ShowList = ({index , task,isFavorite, funhandleDeleteTask,funtoggleFavorite,funhandleEditTask}) => {
   return (
       <div key={index} className={`f-c bg-slate-400 w-1/2 mx-auto mt-4`}>
                             <div className='f-r w-full '>
@@ -17,17 +17,22 @@ const ShowList = ({index , task, funhandleDeleteTask,funtoggleFavorite,funhandle
                                 
                                 <div className='flex justify-around gap-1 w-1/5'>
 
-                                <IconButton  index={index} stlye={'btn-ro bg-red-950 hover:bg-red-700 transition' } 
-                                fun={funhandleDeleteTask} >
-                                    { <IoCheckmarkCircle />}
+                                <IconButton  
+                                fun={() =>funhandleDeleteTask(index)} >
+                                    { <IoCheckmarkCircle  className='btn-ro bg-red-950 hover:bg-red-700 transition'/>}
                                 </IconButton>
-                                <IconButton  index={index} stlye={`btn ${task.isFavorite ? 'text-pink-600' : ''}` } 
-                                fun={funtoggleFavorite} >
-                                    {task.isFavorite ? <GrFavorite /> : <MdOutlineFavorite />}
+
+                                <IconButton  
+                                fun={() =>funtoggleFavorite(index)} >
+                                    {isFavorite ? <MdOutlineFavorite className="btn text-pink-500"
+                                     /> :
+                                      < GrFavorite className="btn"
+                                       />}
                                 </IconButton>
-                                <IconButton  index={index} stlye={'btn bg-green-950 hover:bg-green-700 transition' } 
-                                fun={funhandleEditTask} >
-                                     <FaEdit />
+
+                                <IconButton  
+                                fun={ () =>funhandleEditTask(index)} >
+                                     <FaEdit className='btn bg-green-950 hover:bg-green-700 transition' />
                                 </IconButton>
                                  
                                 </div>
